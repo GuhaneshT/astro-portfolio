@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 
+
 export default defineConfig({
-  output: 'static',
-  base: '/Astro_Webpage/', // very important!
+  site: 'https://GuhaneshT.github.io/Astro_Webpage', // replace with your actual repo URL
 });
