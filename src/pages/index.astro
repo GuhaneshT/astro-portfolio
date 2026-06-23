@@ -6,42 +6,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const projects = [
 	{
-		title: 'Virtual Classroom Platform',
-		description:
-			'Remote learning platform with chat, video, quizzes, and a graph neural network recommendation engine.',
-		stack: ['Full-stack', 'GNN', 'Realtime'],
-		learned: 'Designing product flows around realtime collaboration and recommendation logic.',
-		link: 'https://github.com/GuhaneshT/Virtual-classroom---A1',
-	},
-	{
-		title: 'Rip Current Detection',
-		description:
-			'Computer vision system for identifying rip currents using optical flow on Sony Spresense hardware.',
-		stack: ['Computer Vision', 'Optical Flow', 'Edge AI'],
-		learned: 'Working with motion signals, noisy visual inputs, and edge-device constraints.',
-		link: 'https://github.com/GuhaneshT/RIP-waves',
-	},
-	{
-		title: 'Invoice AI',
-		description:
-			'LLM-powered invoice analysis workflow using Haystack, FastAPI, and AWS for a SAP Labs use case.',
-		stack: ['LLM', 'FastAPI', 'AWS'],
-		learned: 'Connecting retrieval, API design, and cloud deployment into one document workflow.',
-		link: 'https://drive.google.com/file/d/1ILuec481Y_Y1Qu8AJFyJ9LWbM3yDA0Qq/view',
-	},
-	{
 		title: 'MPMS',
-		description: 'Personal management system for organizing project and productivity workflows.',
-		stack: ['Full-stack', 'Product Design', 'Systems Thinking'],
-		learned: 'Breaking a broad productivity idea into concrete modules and usable workflows.',
-		link: 'https://github.com/GuhaneshT/YMX-PMS',
-	},
-	{
-		title: 'Minecraft DSA Simulation',
-		description: 'Minecraft-themed visual simulations for understanding data structures and algorithms.',
-		stack: ['DSA', 'Visualization', 'Interactive Learning'],
-		learned: 'Explaining algorithms through visual state changes instead of only code or text.',
-		link: 'https://github.com/GuhaneshT/Minecraft-DSA',
+		description: 'A deployed management platform built for a real workflow, with authentication and productivity-focused screens.',
+		stack: ['Full-stack', 'Product Design', 'Workflow Systems'],
+		learned: 'Turning a practical requirement into a usable deployed product, with attention to flows, screens, and deployment details.',
+		link: 'https://mpms-frontend-zeta.vercel.app/login',
+		repo: 'https://github.com/GuhaneshT/YMX-PMS',
 	},
 	{
 		title: 'RopeVim',
@@ -56,6 +26,29 @@ const projects = [
 		stack: ['Go', 'Distributed Systems', 'CLI'],
 		learned: 'How membership protocols detect failures through probing, suspicion, and gossip.',
 		link: 'https://github.com/GuhaneshT/SWIM_Simulation_Go',
+	},
+	{
+		title: 'Minecraft DSA Simulation',
+		description: 'Minecraft-themed visual simulations for understanding data structures and algorithms.',
+		stack: ['DSA', 'Visualization', 'Interactive Learning'],
+		learned: 'Explaining algorithms through visual state changes instead of only code or text.',
+		link: 'https://github.com/GuhaneshT/Minecraft-DSA',
+	},
+	{
+		title: 'Virtual Classroom Platform',
+		description:
+			'Remote learning platform with chat, video, quizzes, and a graph neural network recommendation engine.',
+		stack: ['Full-stack', 'GNN', 'Realtime'],
+		learned: 'Designing product flows around realtime collaboration and recommendation logic.',
+		link: 'https://github.com/GuhaneshT/Virtual-classroom---A1',
+	},
+	{
+		title: 'Rip Current Detection',
+		description:
+			'Computer vision system for identifying rip currents using optical flow on Sony Spresense hardware.',
+		stack: ['Computer Vision', 'Optical Flow', 'Edge AI'],
+		learned: 'Working with motion signals, noisy visual inputs, and edge-device constraints.',
+		link: 'https://github.com/GuhaneshT/RIP-waves',
 	},
 ];
 
@@ -77,20 +70,19 @@ const experience = {
 
 const skills = [
 	'Python',
+	'Java',
+	'Go',
+	'Software Engineering',
+	'Distributed systems',
+	'Data Structures and Algorithms',
 	'FastAPI',
-	'Computer Vision',
 	'LLMs',
-	'Haystack',
+	'OCI',
 	'AWS',
-	'OCI DevOps',
 	'Terraform',
 	'Helm',
-	'Rust',
-	'Go',
-	'DSA',
-	'Distributed systems',
-	'Astro',
-	'Full-stack apps',
+	'Rust'
+	
 ];
 ---
 
@@ -129,7 +121,7 @@ const skills = [
 
 				<section class="metrics" aria-label="Portfolio highlights">
 					<div>
-						<strong>07</strong>
+						<strong>{projects.length.toString().padStart(2, '0')}</strong>
 						<span>featured builds</span>
 					</div>
 					<div>
@@ -179,7 +171,10 @@ const skills = [
 									{project.stack.map((item) => <li>{item}</li>)}
 								</ul>
 								<p class="learned"><strong>What I learned:</strong> {project.learned}</p>
-								<a href={project.link} target="_blank" rel="noreferrer">Open project</a>
+								<div class="project-links">
+									<a href={project.link} target="_blank" rel="noreferrer">Open project</a>
+									{'repo' in project && <a href={project.repo} target="_blank" rel="noreferrer">Source</a>}
+								</div>
 							</article>
 						))}
 					</div>
@@ -472,6 +467,12 @@ const skills = [
 		background: rgba(255, 255, 255, 0.04);
 		font-size: 0.9rem;
 		font-weight: 700;
+	}
+
+	.project-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.9rem;
 	}
 
 	.project-card a {

@@ -4,7 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
 
-const readingItems: string[] = [];
+const completedBooks = ['The Silent Patient', 'The Pilgrim'];
+const currentBooks = ['The Whisper Man'];
 ---
 
 <!doctype html>
@@ -22,22 +23,23 @@ const readingItems: string[] = [];
 				<p class="eyebrow">Reading</p>
 				<h1>Technical blogs and books</h1>
 				<p>
-					A place for notes from systems, AI, software engineering, algorithms, and product engineering
-					material.
+					Things I am reading
 				</p>
 			</section>
 
-			<section class="empty-state" aria-label="Reading list">
-				{readingItems.length === 0 ? (
-					<div>
-						<h2>Nothing listed yet.</h2>
-						<p>Reading notes and links will show up here when I add them.</p>
-					</div>
-				) : (
+			<section class="reading-grid" aria-label="Reading list">
+				<article>
+					<p class="label">Reading</p>
 					<ul>
-						{readingItems.map((item) => <li>{item}</li>)}
+						{currentBooks.map((item) => <li>{item}</li>)}
 					</ul>
-				)}
+				</article>
+				<article>
+					<p class="label">Completed</p>
+					<ul>
+						{completedBooks.map((item) => <li>{item}</li>)}
+					</ul>
+				</article>
 			</section>
 		</main>
 		<Footer />
@@ -70,26 +72,45 @@ const readingItems: string[] = [];
 		font-size: 1.18rem;
 	}
 
-	.empty-state {
-		min-height: 280px;
+	.reading-grid {
 		display: grid;
-		align-items: center;
-		padding: 2rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	article {
+		display: grid;
+		align-content: start;
+		gap: 1rem;
+		min-height: 220px;
+		padding: 1.5rem;
 		border: 1px solid var(--border);
 		border-radius: 8px;
 		background: rgba(255, 255, 255, 0.045);
 	}
 
-	.empty-state div {
+	.label {
+		color: var(--accent);
+		font-size: 0.85rem;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	ul {
 		display: grid;
-		gap: 0.6rem;
-	}
-
-	h2 {
-		font-size: clamp(2rem, 4vw, 3rem);
-	}
-
-	.empty-state p {
+		gap: 0.7rem;
+		margin: 0;
+		padding-left: 1.2rem;
 		color: var(--muted-strong);
+	}
+
+	li::marker {
+		color: var(--accent);
+	}
+
+	@media (max-width: 700px) {
+		.reading-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
