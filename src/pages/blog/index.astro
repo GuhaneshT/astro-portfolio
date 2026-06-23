@@ -5,164 +5,232 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE } from '../../consts';
 
 const projects = [
-  {
-    title: "Virtual Classroom Platform",
-    description: "Remote classroom with chat, video, quizzes, and a GNN-based recommendation engine.",
-    image: "https://img.freepik.com/free-vector/online-tutorials-concept_52683-37480.jpg",
-    link: "https://github.com/GuhaneshT/Virtual-classroom---A1",
-    date: new Date("2024-11-25"),
-  },
-  {
-    title: "Rip Current Detection",
-    description: "Computer vision system for detecting rip currents using Optical Flow, built for Sony Spresense.",
-    image: "https://img.freepik.com/free-photo/artificial-intelligence-concept_23-2150705237.jpg",
-    link: "https://github.com/GuhaneshT/RIP-waves",
-    date: new Date("2025-01-10"),
-  },
-  {
-    title: "Invoice AI – SAP Labs",
-    description: "LLM-based invoice analysis using Haystack, FastAPI, and AWS. Built for industry use case.",
-    image: "https://img.freepik.com/free-vector/invoice-concept-illustration_114360-2271.jpg",
-    link: "https://drive.google.com/file/d/1ILuec481Y_Y1Qu8AJFyJ9LWbM3yDA0Qq/view",
-    date: new Date("2024-07-01"),
-  }
+	{
+		title: 'Virtual Classroom Platform',
+		description:
+			'Remote classroom with chat, video, quizzes, and a graph neural network recommendation layer.',
+		image: '/blog-placeholder-1.jpg',
+		link: 'https://github.com/GuhaneshT/Virtual-classroom---A1',
+		date: 'Nov 2024',
+		stack: ['Full-stack', 'Realtime', 'GNN'],
+		learned: 'Designing product flows around realtime collaboration and recommendation logic.',
+	},
+	{
+		title: 'Rip Current Detection',
+		description:
+			'Computer vision system for detecting rip currents using optical flow, built for Sony Spresense.',
+		image: '/blog-placeholder-2.jpg',
+		link: 'https://github.com/GuhaneshT/RIP-waves',
+		date: 'Jan 2025',
+		stack: ['Computer Vision', 'Optical Flow', 'Edge AI'],
+		learned: 'Working with motion signals, noisy visual inputs, and edge-device constraints.',
+	},
+	{
+		title: 'Invoice AI - SAP Labs',
+		description:
+			'LLM-based invoice analysis using Haystack, FastAPI, and AWS for an industry problem statement.',
+		image: '/blog-placeholder-3.jpg',
+		link: 'https://drive.google.com/file/d/1ILuec481Y_Y1Qu8AJFyJ9LWbM3yDA0Qq/view',
+		date: 'Jul 2024',
+		stack: ['LLM', 'FastAPI', 'AWS'],
+		learned: 'Connecting retrieval, API design, and cloud deployment into one document workflow.',
+	},
+	{
+		title: 'MPMS',
+		description: 'Personal management system for organizing project and productivity workflows.',
+		image: '/blog-placeholder-4.jpg',
+		link: 'https://github.com/GuhaneshT/YMX-PMS',
+		date: 'Side project',
+		stack: ['Full-stack', 'Product Design', 'Systems Thinking'],
+		learned: 'Breaking a broad productivity idea into concrete modules and usable workflows.',
+	},
+	{
+		title: 'Minecraft DSA Simulation',
+		description: 'Minecraft-themed visual simulations for understanding data structures and algorithms.',
+		image: '/blog-placeholder-5.jpg',
+		link: 'https://github.com/GuhaneshT/Minecraft-DSA',
+		date: 'Side project',
+		stack: ['DSA', 'Visualization', 'Interactive Learning'],
+		learned: 'Explaining algorithms through visual state changes instead of only code or text.',
+	},
+	{
+		title: 'RopeVim',
+		description: 'Rust-based terminal text editor built around the rope data structure.',
+		image: '/blog-placeholder-about.jpg',
+		link: 'https://github.com/GuhaneshT/RopeVim-Rust_based_terminal_text_editor',
+		date: 'Side project',
+		stack: ['Rust', 'Terminal UI', 'Rope Data Structure'],
+		learned: 'How editor internals manage large text buffers, cursor movement, and terminal input.',
+	},
+	{
+		title: 'SWIM CLI Simulation',
+		description: 'Command-line simulation of SWIM-style failure detection for distributed systems.',
+		image: '/background-image101.avif',
+		link: 'https://github.com/GuhaneshT/SWIM_Simulation_Go',
+		date: 'Side project',
+		stack: ['Go', 'Distributed Systems', 'CLI'],
+		learned: 'How membership protocols detect failures through probing, suspicion, and gossip.',
+	},
 ];
 ---
 
 <html lang="en">
-  <head>
-    <BaseHead title={`Projects – ${SITE_TITLE}`} description="Guhanesh's featured software and AI projects" />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
+	<head>
+		<BaseHead title={`Projects | ${SITE_TITLE}`} description="Featured software, AI, and computer vision projects by Guhanesh T." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="page-hero">
+				<p class="eyebrow">Selected work</p>
+				<h1>Projects</h1>
+				<p>
+					Practical builds across full-stack software, AI workflows, computer vision, data structures,
+					terminal tooling, and distributed systems.
+				</p>
+			</section>
 
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: system-ui, sans-serif;
-      }
-
-      main {
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 1rem;
-      }
-
-      h1 {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      li {
-        background: rgba(255, 255, 255, 0.02);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.2s ease;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-
-      li:hover {
-        transform: translateY(-4px);
-      }
-
-      li img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin: 0.75rem 1rem 0;
-        color: rgb(var(--black, 20,20,20));
-      }
-
-      .description {
-        font-size: 0.95rem;
-        color: rgb(var(--gray-dark, 80,80,80));
-        margin: 0.5rem 1rem;
-      }
-
-      .date {
-        font-size: 0.85rem;
-        color: rgb(var(--gray, 130,130,130));
-        margin: 0 1rem 1rem;
-      }
-
-      a {
-        text-decoration: none;
-        display: block;
-        height: 100%;
-      }
-
-      a:hover .title,
-      a:hover .date {
-        color: rgb(var(--accent, 60,130,240));
-      }
-
-      @media (max-width: 600px) {
-        .title {
-          font-size: 1rem;
-        }
-
-        .description {
-          font-size: 0.875rem;
-        }
-
-        .date {
-          font-size: 0.75rem;
-        }
-
-        main {
-          padding: 0.5rem;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <Header />
-    <main>
-      <h1>Projects</h1>
-      <ul>
-        {projects.map((project) => (
-          <li>
-            <a href={project.link} target="_blank">
-              <img
-                width="720"
-                height="360"
-                src={project.image}
-                alt={`Cover image for ${project.title}`}
-              />
-              <h4 class="title">{project.title}</h4>
-              <p class="description">{project.description}</p>
-              <p class="date">
-                {project.date.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric'
-                })}
-              </p>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </main>
-    <Footer />
-  </body>
+			<section class="projects" aria-label="Project list">
+				{projects.map((project) => (
+					<article class="project">
+						<a href={project.link} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}>
+							<img width="720" height="420" src={project.image} alt="" />
+							<div class="content">
+								<div class="title-row">
+									<h2>{project.title}</h2>
+									<span>{project.date}</span>
+								</div>
+								<p>{project.description}</p>
+								<ul aria-label={`${project.title} stack`}>
+									{project.stack.map((tag) => <li>{tag}</li>)}
+								</ul>
+								<p class="learned"><strong>What I learned:</strong> {project.learned}</p>
+							</div>
+						</a>
+					</article>
+				))}
+			</section>
+		</main>
+		<Footer />
+	</body>
 </html>
+
+<style>
+	.page-hero {
+		display: grid;
+		gap: 0.8rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	h1 {
+		font-size: clamp(3rem, 8vw, 5.5rem);
+	}
+
+	.page-hero p:last-child {
+		max-width: 680px;
+		color: var(--muted-strong);
+		font-size: 1.18rem;
+	}
+
+	.projects {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.project a {
+		display: grid;
+		grid-template-columns: 260px 1fr;
+		overflow: hidden;
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.045);
+		color: inherit;
+		text-decoration: none;
+		transition:
+			border-color 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.project a:hover {
+		border-color: var(--border-strong);
+		transform: translateY(-2px);
+	}
+
+	.project img {
+		width: 100%;
+		height: 100%;
+		min-height: 220px;
+		object-fit: cover;
+	}
+
+	.content {
+		display: grid;
+		gap: 1rem;
+		padding: 1.25rem;
+	}
+
+	.title-row {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	h2 {
+		font-size: 1.55rem;
+	}
+
+	.title-row span,
+	.content p {
+		color: var(--muted-strong);
+	}
+
+	.learned {
+		padding-top: 0.85rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.learned strong {
+		color: var(--text);
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		padding: 0.35rem 0.55rem;
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		color: var(--muted-strong);
+		background: rgba(255, 255, 255, 0.04);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	@media (max-width: 760px) {
+		.project a {
+			grid-template-columns: 1fr;
+		}
+
+		.project img {
+			aspect-ratio: 16 / 9;
+			min-height: 0;
+		}
+
+		.title-row {
+			display: grid;
+		}
+	}
+</style>

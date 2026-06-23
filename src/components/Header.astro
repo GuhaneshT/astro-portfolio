@@ -1,191 +1,121 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
 ---
 
 <header>
     <nav>
-        <!-- Mobile Menu Toggle Buttons - Now on the left -->
-        <div class="menu-controls">
-            <button id="menu-toggle" class="menu-toggle" aria-label="Open Menu">
-                ☰
-            </button>
-            <button id="menu-close" class="menu-close" aria-label="Close Menu">
-                ✕
-            </button>
-        </div>
+        <a class="brand" href="/" aria-label="Guhanesh T home">GT</a>
 
-        <!-- Internal Links (Mobile Menu) -->
         <div id="menu" class="internal-links">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/blog">Projects</HeaderLink>
+            <HeaderLink href="/reading">Reading</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
-			
+            <HeaderLink href="/contact">Contact</HeaderLink>
         </div>
 
-        <!-- Social Links -->
         <div class="social-links">
-            <a href="https://twitter.com/astrodotbuild" target="_blank">
-                <svg viewBox="0 0 16 16" aria-hidden="true" width="16" height="16">
-                    <path fill="currentColor" d="M5.026 15c6.038 0 9.341-5.003..."></path>
-                </svg>
-            </a>
-            <a href="https://github.com/withastro/astro" target="_blank">
-                <svg viewBox="0 0 16 16" aria-hidden="true" width="16" height="16">
-                    <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8..."></path>
-                </svg>
-            </a>
+            <a href="https://github.com/GuhaneshT" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://leetcode.com/u/gleetcode_23" target="_blank" rel="noreferrer">LeetCode</a>
         </div>
     </nav>
 </header>
 
 <style>
-    /* Header Styling */
     header {
-        margin: 0;
-        padding: 0 1em;
-        background: var(--black);
+        padding: 0 1.25rem;
+        background: rgba(12, 17, 24, 0.86);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(18px);
         position: sticky;
         top: 0;
         width: 100%;
         z-index: 1000;
     }
 
-    /* Navigation Layout */
     nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1em 0;
-        position: relative;
+        gap: 1rem;
+        max-width: 1120px;
+        margin: 0 auto;
+        min-height: 68px;
     }
 
-    /* Menu Controls Container */
-    .menu-controls {
-        position: relative;
-        padding-left: 1rem; /* Add padding to the left */
+    .brand {
+        display: inline-grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--border-strong);
+        border-radius: 8px;
+        color: var(--text);
+        background: var(--surface);
+        font-weight: 800;
+        text-decoration: none;
+        letter-spacing: 0;
     }
 
-    /* Internal Links */
     .internal-links {
         display: flex;
-        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.35rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
     }
 
-    nav a {
-        padding: 1em 0.5em;
-        color: var(--accent);
-        text-decoration: none;
-        transition: 0.3s ease-in-out;
+    .internal-links :global(a) {
+        border-radius: 7px;
+        padding: 0.45rem 0.7rem;
     }
 
-    nav a:hover {
-        color: var(--accent-dark);
-    }
-
-    /* Social Links */
     .social-links {
         display: flex;
-        gap: 1rem;
+        gap: 0.8rem;
+        justify-content: flex-end;
+        min-width: 150px;
     }
 
-    /* Mobile Menu Buttons */
-    .menu-toggle,
-    .menu-close {
-        display: none; /* Hide by default for desktop */
-        background: none;
-        border: none;
-        color: var(--accent);
-        font-size: 1.5rem; /* Consistent size for both icons */
-        line-height: 1;
-        cursor: pointer;
-        z-index: 1100; /* Higher than the menu */
-        transition: opacity 0.3s ease-in-out;
-        padding: 0.5rem; /* Add padding around both buttons */
+    .social-links a {
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
     }
 
-    /* Full-Screen Mobile Menu */
     @media (max-width: 720px) {
-        /* Hide social links on smaller screens */
+        header {
+            padding: 0 0.8rem;
+        }
+
+        nav {
+            min-height: 62px;
+            gap: 0.55rem;
+        }
+
+        .internal-links {
+            gap: 0;
+            overflow-x: auto;
+            justify-content: flex-start;
+            scrollbar-width: none;
+        }
+
+        .internal-links::-webkit-scrollbar {
+            display: none;
+        }
+
         .social-links {
             display: none;
         }
 
-        /* Show open menu button */
-        .menu-toggle {
-            display: block;
-        }
-
-        /* Close button hidden initially */
-        .menu-close {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 1200; /* Higher than menu */
-        }
-
-        /* Menu hidden by default */
-        .internal-links {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-5px);
-            transition: all 0.3s ease-in-out;
-            z-index: 1000;
-        }
-
-        /* Show menu when active */
-        .internal-links.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .internal-links a {
-            font-size: 1 rem;
-            color: var(--accent);
+        .brand {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
         }
     }
 </style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const menuToggle = document.getElementById("menu-toggle");
-        const menuClose = document.getElementById("menu-close");
-        const menu = document.getElementById("menu");
-
-        // Open menu
-        menuToggle.addEventListener("click", () => {
-            menu.classList.add("active");
-            menuToggle.style.display = "none";
-            menuClose.style.display = "block";
-        });
-
-        // Close menu
-        menuClose.addEventListener("click", () => {
-            menu.classList.remove("active");
-            menuClose.style.display = "none";
-            menuToggle.style.display = "block";
-        });
-
-        // Close menu when clicking on links
-        const navLinks = menu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.remove("active");
-                menuClose.style.display = "none";
-                menuToggle.style.display = "block";
-            });
-        });
-    });
-</script>
