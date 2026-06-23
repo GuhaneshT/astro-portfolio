@@ -12,7 +12,7 @@ const projects = [
 		link: 'https://mpms-frontend-zeta.vercel.app/login',
 		repo: 'https://github.com/GuhaneshT/YMX-PMS',
 		subtopic: 'Deployed application',
-		stack: ['Python','React JS','Supabase','PostgreSQL','Custom CDC'],
+		stack: ['Python', 'React JS', 'Supabase', 'PostgreSQL', 'Custom CDC'],
 		learned: 'Turning a practical requirement into a usable deployed product, with attention to flows, screens, and deployment details.',
 	},
 	{
@@ -23,6 +23,7 @@ const projects = [
 		subtopic: 'Side Project',
 		stack: ['Rust', 'Terminal UI', 'Rope Data Structure'],
 		learned: 'How editor internals manage large text buffers, cursor movement, and terminal input.',
+		repo: undefined,
 	},
 	{
 		title: 'SWIM CLI Simulation',
@@ -32,6 +33,7 @@ const projects = [
 		subtopic: 'Distributed systems',
 		stack: ['Go', 'Distributed Systems', 'CLI'],
 		learned: 'How membership protocols detect failures through probing, suspicion, and gossip.',
+		repo: undefined,
 	},
 	{
 		title: 'Minecraft DSA Simulation',
@@ -41,6 +43,7 @@ const projects = [
 		subtopic: 'DSA',
 		stack: ['Basic Web stack', 'DSA'],
 		learned: 'Explaining algorithms through visual state changes instead of only code or text.',
+		repo: undefined,
 	},
 	{
 		title: 'Virtual Classroom Platform',
@@ -49,8 +52,9 @@ const projects = [
 		image: '/blog-placeholder-1.jpg',
 		link: 'https://github.com/GuhaneshT/Virtual-classroom---A1',
 		subtopic: 'Course Project',
-		stack: ['Python','MySQL','Redis',React JS'],
+		stack: ['Python', 'MySQL', 'Redis', 'React JS'],
 		learned: 'Designing product flows around realtime collaboration and recommendation logic.',
+		repo: undefined,
 	},
 	{
 		title: 'Rip Current Detection',
@@ -59,8 +63,9 @@ const projects = [
 		image: '/blog-placeholder-2.jpg',
 		link: 'https://github.com/GuhaneshT/RIP-waves',
 		subtopic: 'Course Project',
-		stack: ['Python','Computer Vision'],
+		stack: ['Python', 'Computer Vision'],
 		learned: 'Working with motion signals, noisy visual inputs and learning complex algorithms',
+		repo: undefined,
 	},
 ];
 ---
@@ -98,7 +103,7 @@ const projects = [
 								<p class="learned"><strong>What I learned:</strong> {project.learned}</p>
 								<div class="project-links">
 									<a href={project.link} target="_blank" rel="noreferrer">Open project</a>
-									{'repo' in project && <a href={project.repo} target="_blank" rel="noreferrer">Source</a>}
+									{project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Source</a>}
 								</div>
 							</div>
 						</div>

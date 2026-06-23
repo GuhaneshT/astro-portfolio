@@ -19,6 +19,7 @@ const projects = [
 		stack: ['Rust', 'Terminal UI', 'Rope Data Structure'],
 		learned: 'How editor internals manage large text buffers, cursor movement, and terminal input.',
 		link: 'https://github.com/GuhaneshT/RopeVim-Rust_based_terminal_text_editor',
+		repo: undefined,
 	},
 	{
 		title: 'SWIM CLI Simulation',
@@ -26,6 +27,7 @@ const projects = [
 		stack: ['Go', 'Distributed Systems', 'CLI'],
 		learned: 'How membership protocols detect failures through probing, suspicion, and gossip.',
 		link: 'https://github.com/GuhaneshT/SWIM_Simulation_Go',
+		repo: undefined,
 	},
 	{
 		title: 'Minecraft DSA Simulation',
@@ -33,6 +35,7 @@ const projects = [
 		stack: ['DSA', 'Visualization', 'Interactive Learning'],
 		learned: 'Explaining algorithms through visual state changes instead of only code or text.',
 		link: 'https://github.com/GuhaneshT/Minecraft-DSA',
+		repo: undefined,
 	},
 	{
 		title: 'Virtual Classroom Platform',
@@ -41,6 +44,7 @@ const projects = [
 		stack: ['Full-stack', 'GNN', 'Realtime'],
 		learned: 'Designing product flows around realtime collaboration and recommendation logic.',
 		link: 'https://github.com/GuhaneshT/Virtual-classroom---A1',
+		repo: undefined,
 	},
 	{
 		title: 'Rip Current Detection',
@@ -49,6 +53,7 @@ const projects = [
 		stack: ['Computer Vision', 'Optical Flow', 'Edge AI'],
 		learned: 'Working with motion signals, noisy visual inputs, and edge-device constraints.',
 		link: 'https://github.com/GuhaneshT/RIP-waves',
+		repo: undefined,
 	},
 ];
 
@@ -173,7 +178,7 @@ const skills = [
 								<p class="learned"><strong>What I learned:</strong> {project.learned}</p>
 								<div class="project-links">
 									<a href={project.link} target="_blank" rel="noreferrer">Open project</a>
-									{'repo' in project && <a href={project.repo} target="_blank" rel="noreferrer">Source</a>}
+									{project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Source</a>}
 								</div>
 							</article>
 						))}
